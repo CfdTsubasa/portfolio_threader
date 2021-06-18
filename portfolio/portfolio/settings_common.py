@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+
+    'excelApp.apps.ExcelappConfig',
 ]
 
 MIDDLEWARE = [

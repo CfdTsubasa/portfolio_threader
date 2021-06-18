@@ -15,11 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from . import views
 
-
+app_name = 'excelApp'
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',include('Threader.urls')),
-    path('accounts/',include('allauth.urls')),
-    path('excelApp',include('excelApp.urls')),
+    path('', views.index, name='index'),
 ]

@@ -39,11 +39,11 @@
           <li class="nav-item {% block active_inquiry %}{% endblock %}">
             <a class="nav-link" href="{% url 'Threader:inquiry' %} ">Inquiry</a>
           </li>
-          {#{% if user.is_authenticated %}
+          {# {% if user.is_authenticated %}
           <li class="nav-item {% block active_diary_list %}{% endblock %}">
-            <a class="nav-link" href="{% url 'diary:diary_list' %}">Diary List</a>
+            <a class="nav-link" href="#">Diary List</a>
           </li>
-          {% endif %}
+          {% endif %} #}
         </ul>
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
@@ -57,7 +57,7 @@
           <li class="nav-item {% block active_login %}{% endblock %}">
             <a class="nav-link" href="#">Login</a>
           </li>
-          {% endif %}#}
+          {% endif %}
         </ul>
       </div>
     </div>
