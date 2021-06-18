@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}サインアップ{% endblock %}
+
+{% block active_signup %}active{% endblock %}
+
+{% block contents %}
+
+{% if messages %}
+<div class="container text-center">
+{% else %}
+<div class="container text-center" style="margin-top: 6rem">
+{% endif %}
+    <div class="row">
+        <h1>サインアップ</h1>
+            <form method="post" action="{% url 'account_signup' %} ">
+　
+                {{ form.as_p }}
+
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}                    
+                <button class="btn btn-primary" type="submit">送信</button>                
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}0

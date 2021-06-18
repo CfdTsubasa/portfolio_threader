@@ -1,12 +1,32 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Page</title>
-</head>
-<body>
-    <h1>Hello World!!</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}threader{% endblock %}
+
+{% block header %}
+
+<header class="masthead text-center">
+    <div class="masthead-content">
+        <div class="container">
+            <h1 class="masthead-heading mb-0">THREADER</h1>
+            <a href="{% url 'account_login' %}" class="btn btn-primary btn-xl rounded-pill mt-5">LOG IN</a>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
