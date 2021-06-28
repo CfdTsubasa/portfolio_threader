@@ -11,12 +11,22 @@
 {% else %}
 <div class="container text-center" style="margin-top: 6rem">
 {% endif %}
-    <div class="row">
+    <!-- <div class="row"> -->
         <h1>Log In</h1>
+        <div class="mt-5">
             <form method="post" action="{% url 'account_login' %} ">
                 {% csrf_token %}
 
-                {{ form.as_p }}
+                {% for field in form %}
+                    {% if forloop.counter0 == 0 %}
+                        <p>Email</p>
+                    {% elif forloop.counter0 == 1 %}
+                        <p class="mt-2">Password</p>
+                    {% elif forloop.counter0 == 2 %}
+                        <p class="mt-4">{{ field.label_tag }}</p>
+                    {% endif %}
+                  {{ field }}
+                {% endfor %}
 
                 {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>

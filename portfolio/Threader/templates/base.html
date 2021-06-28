@@ -48,14 +48,14 @@
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a style="color: red;"  class="nav-link" href="#">Logout</a>
+            <a style="color: red;"  class="nav-link" href="{% url 'account_logout' %}">Logout</a>
           </li>
           {% else %}
           <li class="nav-item {% block active_signup %}{% endblock %}" >
           <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
           </li>
           <li class="nav-item {% block active_login %}{% endblock %}">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
           </li>
           {% endif %}
         </ul>
@@ -86,7 +86,7 @@
   <!-- Footer -->
   <footer class="py-5 bg-black">
     <div class="container">
-      <p class="m-0 text-center text-white small">Copyright &copy; Private Diary 2021</p>
+      <p class="m-0 text-center text-white small">Copyright &copy; THREADER 2021</p>
     </div>
     <!-- /.container -->
   </footer>

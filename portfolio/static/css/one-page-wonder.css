@@ -22,7 +22,7 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-	color: #ffffff;
+	color: #ddbebe;
 	text-decoration: none;
 }
 .btn-xl {
@@ -65,7 +65,8 @@ header.masthead {
 	position: relative;
 	overflow: hidden;
 	padding-top: calc(7rem + 72px);
-	padding-bottom: 7rem;
+	/* padding-bottom: 7rem; */
+
 	/* background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%); */
 	background-image: url(/portfolio/static/img/large.jpg);
 	background-repeat: no-repeat;
@@ -124,8 +125,8 @@ header.masthead .bg-circle-4 {
 
 @media (min-width: 992px) {
 	header.masthead {
-		padding-top: calc(10rem + 55px);
-		padding-bottom: 10rem;
+		/* padding-top: calc(10rem + 55px); */
+		/* padding-bottom: 10rem; */
 	}
 	header.masthead .masthead-content .masthead-heading {
 		font-size: 3rem;
@@ -142,13 +143,14 @@ header.masthead .bg-circle-4 {
 .btn-primary {
 	background-color: #ffffff;
 	border-color: #000000;
+	color: black;
 }
 
 .btn-primary:active,
 .btn-primary:focus,
 .btn-primary:hover,
 .text-primary:hover {
-	color: #fff;
+	color: #000000;
 	background-color: #000000 !important;
 	border-color: #ffffff !important;
 }
