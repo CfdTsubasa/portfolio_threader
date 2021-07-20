@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-
-    'excelApp.apps.ExcelappConfig',
 ]
 
 MIDDLEWARE = [
@@ -136,17 +134,17 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
 
-    os.path.join(BASE_DIR,'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
-MESSAGE_TAGS={
-    messages.ERROR:'alert alert-danger',
-    messages.WARNING:'alert alert-warning',
-    messages.SUCCESS:'alert alert-success',
-    messages.INFO:'alert alert-info',
+MESSAGE_TAGS = {
+    messages.ERROR: 'alert alert-danger',
+    messages.WARNING: 'alert alert-warning',
+    messages.SUCCESS: 'alert alert-success',
+    messages.INFO: 'alert alert-info',
 }
 
-AUTH_USER_MODEL='accounts.CustomUser'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 
 # Default primary key field type
@@ -156,27 +154,28 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
 
-AUTHENTICATION_BACKENDS=(
+AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
-ACCOUNT_AUTHENTICATION_METHOD='email'
-ACCOUNT_USERNAME_REQUIRED=False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
 
-ACCOUNT_EMAIL_VARIFICATION='mandatory'
-ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_EMAIL_VARIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
 
-LOGIN_REDIRECT_URL ='Threader:index'
-ACCOUNT_LOGOUT_REDIRECT_URL='account_login'
+LOGIN_REDIRECT_URL = 'Threader:thread_list'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
-ACCOUNT_LOGOUT_ON_GET=True
+ACCOUNT_LOGOUT_ON_GET = True
 
-ACCOUNT_EMAIL_SUBJECT_PREFIX=''
+ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
 
-DEFAULT_FROM_EMAIL='admin@example.com'
+DEFAULT_FROM_EMAIL = 'admin@example.com'
 
 
+MEDIA_URL = '/media/'
 
 LOGGING = {
     'version': 1,

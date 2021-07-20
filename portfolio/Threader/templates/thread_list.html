@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}スレッド一覧|THREAD LIST{% endblock %}
+
+{% block active_thread_list %}active{% endblock %}
+
+{#
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/clean-blog.css' %}">
+    {% endblock %}
+#}
+
+{% block contents %}
+<div class="container text-center">
+    <div class="row">
+        <div class="my-div-style w-100" style="margin-top: 6rem">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="clearfix">
+                    <a href="#" class="btn btn-primary float-right">
+                        新規作成
+                    </a>
+                </div>
+                {% for thread in thread_list %}
+                <div class="post-preview">
+                    <a href="{% url 'Threader:thread_detail' thread.pk %}">
+                        <h2 class="post-title">
+                            {{ thread.title }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ thread.content|truncatechars:20 }}
+                        </h3>
+                    </a>
+                    <p class="post-meta">{{ thread.created_at }}</p>
+                </div>
+                <hr>
+                {% empty %}
+                データがありません。
+                {% endfor %}
+
+                    {% if is_paginated %}
+                    <ul class="pagination"  style="margin: 0 auto; width: 100px;">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% for page_num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == page_num %}
+                            <li class="page-item active">
+                                <a href="#" class="page-link">{{ page_num }}</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item">
+                                <a href="?page={{ page_num }}" class="page-link">{{ page_num }}</a>
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    {% endif %}
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

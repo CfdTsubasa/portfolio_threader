@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>{% block title %}{% endblock %}</title>
+  <title>{% block title %}{% endblock %}</title>endblock
 
   <!-- Bootstrap core CSS -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -39,11 +39,11 @@
           <li class="nav-item {% block active_inquiry %}{% endblock %}">
             <a class="nav-link" href="{% url 'Threader:inquiry' %} ">Inquiry</a>
           </li>
-          {# {% if user.is_authenticated %}
+          {% if user.is_authenticated %}
           <li class="nav-item {% block active_diary_list %}{% endblock %}">
-            <a class="nav-link" href="#">Diary List</a>
+            <a class="nav-link" href="{% url 'Threader:thread_list' %}">Diary List</a>
           </li>
-          {% endif %} #}
+          {% endif %}
         </ul>
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
