@@ -9,33 +9,36 @@
 {% if messages %}
 <div class="container text-center">
 {% else %}
-<div class="container text-center" style="margin-top: 6rem">
+<div class="container text-center" style="margin-top: 1.5rem">
 {% endif %}
     <!-- <div class="row"> -->
         <!-- <div class="my-div-style"> -->
-            <form method="post" class="text-right">
-                {% csrf_token %}
+            <h2 class="mb-4">INQUIRY</h2>
+            <div class="text-center" style="margin: auto 0;">
+                <form method="post" class="text-right">
+                    {% csrf_token %}
 
-                {{ form.non_field_errors }}
+                    {{ form.non_field_errors }}
 
-                {% for field in form %}
-                    <div class="form-group row">
-                        <label for="{{ field.id_for_label }} " class="col-sm-4 col-form-label">
-                            <strong>{{ field.label_tag }} </strong>
-                        </label>                    
-                        <div class="col-sm-8">
-                            {{ field }}
-                            {{ field.errors }}
+                    {% for field in form %}
+                        <div class="form-group row">
+                            <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label">
+                                <strong>{{ field.label_tag }} </strong>
+                            </label>                    
+                            <div class="col-sm-8">
+                                {{ field }}
+                                {{ field.errors }}
+                            </div>
                         </div>
+                    {% endfor %}
+                    <div class="offset-sm-4 col-sm-8">
                     </div>
-                {% endfor %}
-                <div class="offset-sm-4 col-sm-8">
-                </div>
-                    <div class="text-center">
-                    <button class="btn btn-primary" type="submit">送信</button>
-                   
-                </div>
-            </form>
+                        <div class="text-center">
+                        <button class="btn btn-primary" type="submit">送信</button>
+                    
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

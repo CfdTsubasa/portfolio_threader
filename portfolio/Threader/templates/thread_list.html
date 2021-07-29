@@ -14,11 +14,16 @@
 {% block contents %}
 <div class="container text-center">
     <div class="row">
-        <div class="my-div-style w-100" style="margin-top: 6rem">
+        <div class="my-div-style w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="clearfix">
-                    <a href="#" class="btn btn-primary float-right">
+                    <a href="{% url 'Threader:thread_create' %}" class="btn btn-primary float-right">
                         新規作成
+                    </a>
+                </div>
+                <div class="clearfix">
+                    <a href="{% url 'Threader:thread_csv' %}" class="btn btn-secondary mt-4 float-right">
+                        Download
                     </a>
                 </div>
                 {% for thread in thread_list %}
@@ -39,7 +44,7 @@
                 {% endfor %}
 
                     {% if is_paginated %}
-                    <ul class="pagination"  style="margin: 0 auto; width: 100px;">
+                    <ul class="pagination mb-5"  style="margin: 0 auto; width: 100px;">
                         {% if page_obj.has_previous %}
                         <li class="page-item">
                             <a href="?page={{ page_obj.previous_page_number }}" class="page-link">

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% load bootstrap4 %}
+{% load i18n %}
+{% load account socialaccount %}
+
 {% block title %}Log In{% endblock %}
 
 {% block active_signup %}active{% endblock %}
@@ -9,15 +13,40 @@
 {% if messages %}
 <div class="container text-center">
 {% else %}
-<div class="container text-center" style="margin-top: 6rem">
+<div class="container text-center mt-5">
 {% endif %}
-    <!-- <div class="row"> -->
         <h1>Log In</h1>
-        <div class="mt-5">
+        {% get_providers as socialaccount_providers %}
+
+        {% if socialaccount_providers %}
+        <p>{% blocktrans with site.name as site_name %}Please sign in with one
+        of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+        for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+        <div class="socialaccount_ballot">
+
+        <ul class="socialaccount_providers text-center" style="list-style: none;">
+            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+        </ul>
+
+        <!-- <div class="login-or">{% trans 'or' %}</div> -->
+        <div class="login-or">or</div>
+
+
+        </div>
+        {% include "socialaccount/snippets/login_extra.html" %}
+
+        {% else %}
+        <p>{% blocktrans %}If you have not created an account yet, then please
+        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+        {% endif %}
+        <hr>
+        <h4 class="mt-5">Log in by Email</h4>
+        <div>
             <form method="post" action="{% url 'account_login' %} ">
                 {% csrf_token %}
-
-                {% for field in form %}
+                <!-- {% bootstrap_form form %} -->
+                 {% for field in form %}
                     {% if forloop.counter0 == 0 %}
                         <p>Email</p>
                     {% elif forloop.counter0 == 1 %}
@@ -26,12 +55,12 @@
                         <p class="mt-4">{{ field.label_tag }}</p>
                     {% endif %}
                   {{ field }}
-                {% endfor %}
+                {% endfor %} 
 
                 {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-                {% endif %}                    
-                <button class="btn btn-primary" type="submit">ログイン</button>
+                {% endif %}               
+                <button class="btn btn-primary" type="submit">ログイン</button>                
                 <p><a href="{% url 'account_reset_password' %}" class="button secondaryAction">
                     パスワードを忘れましたか？
                 </a></p>                

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}日記編集|THREAD Detail{% endblock %}
+
+{% block active_thread_list %}active{% endblock %}
+
+{% block contents %}
+
+<div class="container text-center">
+    <div class="my-div-style w-100" style="margin-top: 6rem">        
+        <div class="row text-center" style="margin: 0 auto;">
+            <form method="post">
+                {% csrf_token %}
+                <p>本当に削除しますか？</p>
+                <button class="btn btn-primary mt-5" type="submit">削除</button>
+                <a href="{% url 'Threader:thread_detail' object.pk %}" class="btn btn-secondary mt-5 ml-2">キャンセル</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

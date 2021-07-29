@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}日記編集|THREAD Detail{% endblock %}
+
+{% block active_thread_list %}active{% endblock %}
+
+{% block contents %}
+
+<div class="container text-center">
+    <div class="my-div-style w-100" style="margin-top: 6rem">        
+        <div class="row">
+            <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <table class="table">
+                {{ form.as_table }}
+            </table>
+            <button class="btn btn-primary" type="submit">更新</button>
+            <a href="{% url 'Threader:thread_detail' object.pk %}" class="btn btn-secondary ml-2">キャンセル</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
